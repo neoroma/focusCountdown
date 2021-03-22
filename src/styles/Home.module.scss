@@ -1,0 +1,81 @@
+$primary-color: #0070f3;
+$mainBg: radial-gradient(73.77% 73.77% at 50% 50%, rgba(86, 204, 242, 0.76) 0%, #28B6E3 61.93%);
+$lineColor: #FFFFFF;
+$circleTextColor: #4F4F4F;
+$titleSize: 3rem;
+$timerSize: 7.5rem;
+$smallSize: 1.2rem;
+$circleSize: 17rem;
+$circleRadius: $circleSize / 2;
+$circleTextSize: $circleSize / 6;
+
+.mark-div {
+  outline: 2px solid crimson;
+}
+
+.container {
+  outline-offset: -5px;
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $mainBg;
+}
+
+.main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $lineColor;
+  text-transform: uppercase;
+
+  justify-content: space-evenly;
+
+  .title {
+    font-size: $titleSize;
+    flex-basis: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .countdown {
+    flex-basis: 15rem;
+    font-size: $timerSize;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .rounded {
+    width: $circleSize;
+    height: $circleSize;
+    border-radius: $circleRadius;
+    background: $lineColor;
+    color: $circleTextColor;
+    font-size: $circleTextSize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+
+    }
+
+    &:focus {
+
+    }
+  }
+}
+
+
+
+@media (max-width: 600px) {
+
+}
