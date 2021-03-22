@@ -1,16 +1,7 @@
-$primary-color: #0070f3;
-$mainBg: radial-gradient(73.77% 73.77% at 50% 50%, rgba(86, 204, 242, 0.76) 0%, #28B6E3 61.93%);
-$lineColor: #FFFFFF;
-$circleTextColor: #4F4F4F;
-$titleSize: 3rem;
-$timerSize: 7.5rem;
-$smallSize: 1.2rem;
-$circleSize: 17rem;
-$circleRadius: $circleSize / 2;
-$circleTextSize: $circleSize / 6;
+@use 'abstracts/theme' as theme;
 
 .mark-div {
-  outline: 2px solid crimson;
+  outline: 2px solid theme.$outlineColor;
 }
 
 .container {
@@ -21,47 +12,40 @@ $circleTextSize: $circleSize / 6;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: $mainBg;
+  background: theme.$mainBg;
+}
+
+.flexCenterColumn {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .main {
   padding: 5rem 0;
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: $lineColor;
+  color: theme.$lineColor;
   text-transform: uppercase;
-
   justify-content: space-evenly;
 
   .title {
-    font-size: $titleSize;
+    font-size: theme.$titleSize;
     flex-basis: 20rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 
   .countdown {
     flex-basis: 15rem;
-    font-size: $timerSize;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    font-size: theme.$timerSize;
   }
 
   .rounded {
-    width: $circleSize;
-    height: $circleSize;
-    border-radius: $circleRadius;
-    background: $lineColor;
-    color: $circleTextColor;
-    font-size: $circleTextSize;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: theme.$circleSize;
+    height: theme.$circleSize;
+    border-radius: theme.$circleRadius;
+    background: theme.$lineColor;
+    color: theme.$circleTextColor;
+    font-size: theme.$circleTextSize;
     cursor: pointer;
 
     &:hover {
