@@ -4,27 +4,27 @@ import { useAppState } from '../hooks/useAppState'
 import { Layout } from '../components/Layout'
 import { InnerApp } from '../components/InnerApp'
 
-export default function Home() {
+export default function Resting() {
   const { state, dispatch } = useAppState()
   const { minutesLeft, secondsLeft } = useCountDown({
-    durationInSeconds: state.focusDuration,
-    running: state.focusing,
+    durationInSeconds: state.restDuration,
+    running: state.resting,
     paused: state.paused,
-    nextRoute: '/resting',
+    nextRoute: '/',
   })
 
-  const handleStartButton = (): void => dispatch({ type: 'start focusing' })
-  const handlePauseButton = (): void => dispatch({ type: 'pause focusing' })
+  const handleStartButton = (): void => dispatch({ type: 'start resting' })
+  const handlePauseButton = (): void => dispatch({ type: 'pause resting' })
 
   return (
-    <Layout title="Running">
+    <Layout title="Resting">
       <InnerApp
         handlePause={handlePauseButton}
         handleStart={handleStartButton}
         minutesLeft={minutesLeft}
         secondsLeft={secondsLeft}
-        running={state.focusing}
-        type="focusing"
+        running={state.resting}
+        type="resting"
       />
     </Layout>
   )

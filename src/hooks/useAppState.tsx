@@ -5,13 +5,15 @@ export interface AppState {
   resting: boolean
   focusDuration: number
   restDuration: number
-  pauseType: 'whileFocusing' | 'whileResting' | null
+  paused: boolean
+  pauseType: 'whileFocusing' | 'whileResting' | 'beforeResting' | 'beforeFocusing' | null
 }
 
 export const defaultAppState: AppState = {
   focusing: false,
   resting: false,
   pauseType: null,
+  paused: false,
   focusDuration: 1500,
   restDuration: 300,
 }
@@ -36,7 +38,11 @@ export interface ResetAll {
   type: 'reset'
 }
 
-export type AppAction = StartFocusAction | StartRestingAction | PauseFocusing | PauseResting | ResetAll
+export interface ChangeType {
+  type: 'switch'
+}
+
+export type AppAction = StartFocusAction | StartRestingAction | PauseFocusing | PauseResting | ResetAll | ChangeType
 
 export interface AppStateContextProps {
   state: AppState
@@ -53,16 +59,25 @@ const appStateReducer = (state: AppState, action: AppAction): AppState => {
       return defaultAppState
     }
     case 'start focusing': {
-      return { ...state, focusing: true }
+      return { ...state, focusing: true, paused: false, pauseType: null }
     }
     case 'pause focusing': {
-      return { ...state, focusing: false, pauseType: 'whileFocusing' }
+      return { ...state, focusing: false, pauseType: 'whileFocusing', paused: true }
     }
     case 'start resting': {
-      return { ...state, focusing: false, resting: true }
+      return { ...state, focusing: false, resting: true, paused: false, pauseType: null }
     }
     case 'pause resting': {
-      return { ...state, resting: false, pauseType: 'whileResting' }
+      return { ...state, resting: false, pauseType: 'whileResting', paused: true }
+    }
+    case 'switch': {
+      return {
+        ...state,
+        resting: false,
+        paused: false,
+        focusing: false,
+        pauseType: state.focusing ? 'beforeResting' : 'beforeFocusing',
+      }
     }
     default:
       neverError('Irrelevant type', action)
