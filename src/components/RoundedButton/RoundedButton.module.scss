@@ -1,0 +1,25 @@
+@use '../../styles/abstracts/theme' as theme;
+@use '../../styles/abstracts/mixins' as mixins;
+
+.flexCenterColumn {
+  @include mixins.flexCenterColumn;
+}
+
+.rounded {
+  text-transform: uppercase;
+  width: theme.$circleSize;
+  height: theme.$circleSize;
+  border-radius: theme.$circleRadius;
+  background: theme.$lineColor;
+  color: theme.$circleTextColor;
+  font-size: theme.$circleTextSize;
+  cursor: pointer;
+
+  &:hover {
+
+  }
+
+  &:focus {
+
+  }
+}

@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import styles from '../styles/Home.module.scss'
 import cn from 'classnames'
+import { RoundedButton } from './RoundedButton/RoundedButton'
 
 interface InnerAppProps {
   handleStart(): void
@@ -22,13 +23,9 @@ export const InnerApp: FC<InnerAppProps> = ({ minutesLeft, secondsLeft, handleSt
           {secondsLeft}
         </div>
         {running ? (
-          <div onClick={handlePause} className={cn(styles.flexCenterColumn, styles.rounded)}>
-            pause
-          </div>
+          <RoundedButton handleClick={handlePause}>pause</RoundedButton>
         ) : (
-          <div onClick={handleStart} className={cn(styles.flexCenterColumn, styles.rounded)}>
-            start
-          </div>
+          <RoundedButton handleClick={handleStart}>start</RoundedButton>
         )}
       </main>
     </div>
